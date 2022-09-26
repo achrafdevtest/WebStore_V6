@@ -2,7 +2,7 @@
 using System.Text.Json;
 using WebStore.Errors;
 
-namespace WebStore.DAL.Middleware;
+namespace WebStore.Middleware;
 
 public class ExceptionMiddleware
 {

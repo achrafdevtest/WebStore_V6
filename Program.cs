@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebStore.DAL.Data.EF;
-using WebStore.DAL.Middleware;
+using WebStore.Middleware;
 using WebStore.Extensions;
 
 

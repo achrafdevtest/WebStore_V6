@@ -28,10 +28,8 @@ namespace WebStore.DAL.Repository
                     };
                     _context.Orders.Add(data);
                     await _context.SaveChangesAsync();
-
-                    return data.Id;
-
                     tr.Commit();
+                    return data.Id;
                 }
                 catch
                 {

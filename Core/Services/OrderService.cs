@@ -43,6 +43,10 @@ public class OrderService
         if (newOrder.newOrderLines.Count <= 0)
             throw new InvalidOperationException("Impossible de créer la facture : Ligne facture est obligatoire");
 
+        var quantity = newOrder.newOrderLines.Where(c => c.Quantity <= 0);
+        if (quantity.Any())
+            throw new InvalidOperationException("Quantité invalide");
+
         // Test : connecting with Database
 
         var customerExist = await _customerRepository.Exist(newOrder.CustomerId);
@@ -60,20 +64,15 @@ public class OrderService
 
         foreach (var item in newOrder.newOrderLines)
         {
-
             if (item.ProductId <= 0)
                 throw new InvalidOperationException("Impossible de créer la facture");
-
-            if (item.Quantity <= 0)
-                throw new InvalidOperationException("Quantité invalide");
 
             var productIsExist = await _productRepository.Exist(item.ProductId);
 
             if (!productIsExist)
                 throw new InvalidOperationException("Impossible de charger le produit ");
         }
-
-        await _orderItemRepository.CreateOrderItems(newOrder.newOrderLines,orderNo);
+        await _orderItemRepository.CreateOrderItems(newOrder.newOrderLines, orderNo);
 
         return orderNo;
     }

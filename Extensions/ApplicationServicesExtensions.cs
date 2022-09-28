@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using WebStore.Core.Interface;
+using WebStore.Core.Models;
 using WebStore.Core.Services;
 using WebStore.DAL.Repository;
 using WebStore.Errors;
@@ -9,6 +11,8 @@ public static class ApplicationServicesExtensions
 {
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
+       
+        services.AddScoped<ITokenService, TokenSrevice>();
         services.AddScoped<IBrandsRepository, BrandsRepository>();
         services.AddTransient<BrandService>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -21,6 +25,8 @@ public static class ApplicationServicesExtensions
         services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<IStoreRepository, StoreRepository>();
         services.AddScoped<ICustomerRepository, CustomerRepository>();
+        services.AddScoped<AccountService>();
+
         services.Configure<ApiBehaviorOptions>(options =>
 
        options.InvalidModelStateResponseFactory = actionContext =>

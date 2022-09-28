@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebStore.Core.Models;
 using WebStore.Core.Services;
 
 namespace WebStore.Controllers;
+[Authorize]
 public class OrdersControllers : BaseApiController
 {
     private readonly OrderService _orderService;

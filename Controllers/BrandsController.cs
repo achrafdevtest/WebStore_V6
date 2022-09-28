@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using WebStore.Core.Models;
 using WebStore.Core.Services;
 using WebStore.Errors;
 
 namespace WebStore.Controllers;
-
+[Authorize]
 public class BrandsController : BaseApiController
 {
     private readonly BrandService _brandService;

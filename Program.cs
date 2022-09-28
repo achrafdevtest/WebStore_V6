@@ -1,19 +1,21 @@
 using Microsoft.EntityFrameworkCore;
 using WebStore.DAL.Data.EF;
-using WebStore.Middleware;
 using WebStore.Extensions;
+using WebStore.Middleware;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
-
+var config = builder.Configuration;
 // Add services to the container.
 
 builder.Services.AddControllers();
 var connectionString = builder.Configuration.GetConnectionString("Store");
 builder.Services.AddDbContext<StoreContext>(x => x.UseSqlServer(connectionString));
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddDbContext<StoreContext>(x => x.UseSqlServer(connectionString));
+builder.Services.AddDbContext<StoreIdentityContext>(x => x.UseSqlServer(connectionString));
 builder.Services.AddApplicationServices();
+builder.Services.AddIdentityService(config);
 builder.Services.AddSwaggerDocumentation();
 builder.Services.AddCors(opt =>
 {
@@ -37,11 +39,10 @@ app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseRouting();
-
 app.UseCors("CorsPolicy");
 
-app.UseAuthorization();
-
+app.UseAuthentication();
+app.UseAuthorization(); 
 app.UseSwaggerDocumentation();
 
 app.UseEndpoints(endpoints =>

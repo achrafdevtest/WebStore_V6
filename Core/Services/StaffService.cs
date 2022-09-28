@@ -29,7 +29,7 @@ namespace WebStore.Core.Services
         public async Task<Staff> Get(string matricule)
         {
             if (string.IsNullOrEmpty(matricule))
-                ArgumentNullException.ThrowIfNull("Matricule invalide !");
+                  throw new InvalidOperationException("Matricule invalide !");
 
             var staffValidator = await _staffRepository.Exist(matricule);
 
@@ -51,7 +51,7 @@ namespace WebStore.Core.Services
                     throw new InvalidOperationException(nameof(newStaff));
 
                 if (string.IsNullOrEmpty(newStaff.Matricule))
-                    ArgumentNullException.ThrowIfNull("Matricule obligatoire !");
+                      throw new InvalidOperationException("Matricule obligatoire !");
 
                 var staffValidator = await _staffRepository.Exist(newStaff.Matricule);
                 if (staffValidator)
@@ -68,7 +68,7 @@ namespace WebStore.Core.Services
         {
 
             if (string.IsNullOrEmpty(matricule))
-                ArgumentNullException.ThrowIfNull("Matricule obligatoire !");
+                  throw new InvalidOperationException("Matricule obligatoire !");
 
             if (staff == null)
                 throw new InvalidOperationException(nameof(staff));

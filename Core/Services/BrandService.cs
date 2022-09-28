@@ -28,7 +28,7 @@ public class BrandService
     public async Task<Brands> GetBrand(string code)
     {
         if (string.IsNullOrEmpty(code))
-            ArgumentNullException.ThrowIfNull("Code invalide !");
+              throw new InvalidOperationException("Code invalide !");
 
         var brandValidator = await _brandsRepository.Exist(code);
 
@@ -49,7 +49,7 @@ public class BrandService
                 throw new InvalidOperationException(nameof(newBrand));
 
             if (string.IsNullOrEmpty(newBrand.Code))
-                ArgumentNullException.ThrowIfNull("Code obligatoire !");
+                  throw new InvalidOperationException("Code obligatoire !");
 
             var brandValidator = await _brandsRepository.Exist(newBrand.Code);
             if (brandValidator)
@@ -65,7 +65,7 @@ public class BrandService
     public async Task Update(UpdateModelBase brand ,string code)
     {
         if (string.IsNullOrEmpty(code))
-            ArgumentNullException.ThrowIfNull("Code obligatoire !");
+              throw new InvalidOperationException("Code obligatoire !");
 
         if (brand == null)
             throw new InvalidOperationException(nameof(brand));

@@ -28,7 +28,7 @@ public class CategoryService
     public async Task<Category> Get(string code)
     {
         if (string.IsNullOrEmpty(code))
-            ArgumentNullException.ThrowIfNull("Code invalide !");
+              throw new InvalidOperationException("Code invalide !");
 
         var categoryValidator = await _categoryRepository.Exist(code);
 
@@ -50,7 +50,7 @@ public class CategoryService
                 throw new InvalidOperationException(nameof(newCategory));
 
             if (string.IsNullOrEmpty(newCategory.Code))
-                ArgumentNullException.ThrowIfNull("Code obligatoire !");
+                  throw new InvalidOperationException("Code obligatoire !");
 
             var categoryValidator = await _categoryRepository.Exist(newCategory.Code);
             if (categoryValidator)
@@ -66,7 +66,7 @@ public class CategoryService
     public async Task Update(UpdateModelBase category, string code)
     {
         if (string.IsNullOrEmpty(code))
-            ArgumentNullException.ThrowIfNull("Code obligatoire !");
+              throw new InvalidOperationException("Code obligatoire !");
 
         if (category == null)
             throw new InvalidOperationException(nameof(Category));

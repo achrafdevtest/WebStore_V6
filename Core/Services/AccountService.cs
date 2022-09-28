@@ -14,7 +14,7 @@ public class AccountService
         _signInManager = signInManager ?? throw new ArgumentNullException(nameof(signInManager));
         _tokenService = tokenService ?? throw new ArgumentNullException(nameof(tokenService));
     }
-    public async Task<string> Login(LoginDto loginDto)
+    public async Task<UserDto> Login(LoginDto loginDto)
     {
         try
         {
@@ -31,7 +31,8 @@ public class AccountService
             if (!result.Succeeded)
                 throw new InvalidOperationException("Authentification invalide!");
 
-            return _tokenService.GenerateToken(user);
+            return new UserDto { Token = _tokenService.GenerateToken(user) };
+        
         }
         catch
         {

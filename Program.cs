@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using WebStore.DAL.Data.EF;
 using WebStore.Extensions;
 using WebStore.Middleware;
@@ -6,6 +7,11 @@ using WebStore.Middleware;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .CreateLogger();
+
 var config = builder.Configuration;
 // Add services to the container.
 

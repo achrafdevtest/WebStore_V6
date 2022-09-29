@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebStore.DAL.Data.EF;
 
@@ -11,9 +12,10 @@ using WebStore.DAL.Data.EF;
 namespace WebStore.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    partial class StoreContextModelSnapshot : ModelSnapshot
+    [Migration("20220929210143_AddTypeName")]
+    partial class AddTypeName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -471,7 +473,8 @@ namespace WebStore.Migrations
                         .HasColumnName("P_Id");
 
                     b.Property<decimal>("Quantity")
-                        .HasColumnType("decimal(18,3)")
+                        .HasMaxLength(50)
+                        .HasColumnType("decimal(18,2)")
                         .HasColumnName("STK_Quantity");
 
                     b.Property<int>("StoreId")

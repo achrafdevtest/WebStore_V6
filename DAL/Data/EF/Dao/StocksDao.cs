@@ -19,9 +19,8 @@ namespace WebStore.DAL.Data.EF.Dao
         [Column("P_Id")]
         public int ProductId { get; set; }
 
-        [Column("STK_Quantity")]
-        [MaxLength(50)]
-        public Decimal Quantity { get; set; }
+        [Column("STK_Quantity", TypeName = "decimal(18,3)")]
+        public decimal Quantity { get; set; }
 
         [Column("STK_Disponibility")]
         public bool Disponibility { get; set; }

@@ -36,8 +36,8 @@ namespace WebStore.DAL.Data.EF.Dao
         [MaxLength(4)]
         public int ModelYears { get; set; }
 
-        [Column("P_PU")]
         [Required]
+        [Column("P_PU", TypeName = "decimal(18,3)")]
         public decimal PU { get; set; }
 
         [Column("P_Unite")]

@@ -24,27 +24,27 @@ namespace WebStore.DAL.Data.EF.Dao
         public int ProductId { get; set; }
 
         [Required]
-        [Column("OI_Quantity")]
+        [Column("OI_Quantity", TypeName = "decimal(18,3)")]
         public decimal Quantity { get; set; }
 
         [Required]
-        [Column("OI_PUHT")]
+        [Column("OI_PUHT", TypeName = "decimal(18,3)")]
         public decimal PuHT { get; set; }
 
         [Required]
-        [Column("OI_PUNet")]
+        [Column("OI_PUNet", TypeName = "decimal(18,3)")]
         public decimal PuNet { get; set; }
 
         [Required]
-        [Column("OI_PUTTC")]
+        [Column("OI_PUTTC", TypeName = "decimal(18,3)")]
         public decimal PuTTC { get; set; }
 
         [Required]
-        [Column("OI_Taxe")]
+        [Column("OI_Taxe", TypeName = "decimal(18,3)")]
         public decimal Taxe { get; set; }
 
         [Required]
-        [Column("OI_Discount")]
+        [Column("OI_Discount", TypeName = "decimal(18,3)")]
         public decimal Discount { get; set; }
     }
 }

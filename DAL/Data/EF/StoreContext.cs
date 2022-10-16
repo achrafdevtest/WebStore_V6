@@ -9,15 +9,15 @@ public class StoreContext : DbContext
     public StoreContext(DbContextOptions<StoreContext> options) : base(options)
     {
     }
-    public DbSet<CustomersDao>? Customers { get; set; }
-    public DbSet<StoresDao>? Stores { get; set; }
-    public DbSet<ProductsDao>? Products { get; set; }
-    public DbSet<CategoriesDao>? Categories { get; set; }
-    public DbSet<BrandsDao>? Brands { get; set; }
-    public DbSet<StaffsDao>? Staffs { get; set; }
-    public DbSet<StocksDao>? Stocks { get; set; }
-    public DbSet<OrderDao>? Orders { get; set; }
-    public DbSet<OrderItemsDao>? OrderItems { get; set; }
+    public DbSet<CustomersDao> Customers => Set<CustomersDao>();
+    public DbSet<StoresDao> Stores => Set<StoresDao>();
+    public DbSet<ProductsDao> Products => Set<ProductsDao>();
+    public DbSet<CategoriesDao> Categories => Set<CategoriesDao>();
+    public DbSet<BrandsDao> Brands => Set<BrandsDao>();
+    public DbSet<StaffsDao> Staffs => Set<StaffsDao>();
+    public DbSet<StocksDao> Stocks => Set<StocksDao>();
+    public DbSet<OrderDao> Orders => Set<OrderDao>();
+    public DbSet<OrderItemsDao> OrderItems => Set<OrderItemsDao>();
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new OrderConfiguration());

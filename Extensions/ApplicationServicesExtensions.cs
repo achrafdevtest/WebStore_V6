@@ -26,6 +26,8 @@ public static class ApplicationServicesExtensions
         services.AddScoped<IStoreRepository, StoreRepository>();
         services.AddScoped<ICustomerRepository, CustomerRepository>();
         services.AddScoped<AccountService>();
+        services.AddScoped<IShopRepository, ShopRepository>();
+        services.AddScoped<ShopService>();  
 
         services.Configure<ApiBehaviorOptions>(options =>
 

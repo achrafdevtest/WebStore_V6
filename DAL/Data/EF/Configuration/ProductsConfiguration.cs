@@ -26,7 +26,9 @@ public class ProductsConfiguration : IEntityTypeConfiguration<ProductsDao>
                 ModelYears = 2022,
                 PU = 2470,
                 Unite = "PIECE",
-                IsActive = true
+                IsActive = true,
+                Discount= 10
+                
             },
             new Product
             {
@@ -42,7 +44,8 @@ public class ProductsConfiguration : IEntityTypeConfiguration<ProductsDao>
                 ModelYears = 2022,
                 PU = 4280,
                 Unite = "PIECE",
-                IsActive = true
+                IsActive = true,
+                Discount = 10
             }
         );
 

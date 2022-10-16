@@ -11,6 +11,6 @@ public class Product
     public decimal PU { get; set; }
     public string? Unite { get; set; }
     public bool IsActive { get; set; }
-
+    public decimal Discount { get; set; }
 }
 

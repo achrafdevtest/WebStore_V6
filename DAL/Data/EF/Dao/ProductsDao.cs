@@ -20,17 +20,20 @@ namespace WebStore.DAL.Data.EF.Dao
         [Required]
         [Column("C_Category_Id")]
         public int CategoryId { get; set; }
-     
+
         [Column("P_Name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [Required]
         [MaxLength(3)]
         [Column("P_Code")]
-        public string Code { get; set; }
+        public string? Code { get; set; }
 
         [Column("P_Description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
+
+        [Column("P_PictureUrl")]
+        public string? Picture { get; set; }
 
         [Column("P_Model_Years")]
         [MaxLength(4)]
@@ -41,7 +44,10 @@ namespace WebStore.DAL.Data.EF.Dao
         public decimal PU { get; set; }
 
         [Column("P_Unite")]
-        public string Unite { get; set; }
+        public string? Unite { get; set; }
+
+        [Column("P_Discount")]
+        public decimal Discount { get; set; }
 
         [Column("P_Status")]
         public bool IsActive { get; set; }
@@ -52,4 +58,4 @@ namespace WebStore.DAL.Data.EF.Dao
         [ForeignKey(nameof(CategoryId))]
         public virtual CategoriesDao Categories { get; set; }
     }
-} 
+}
